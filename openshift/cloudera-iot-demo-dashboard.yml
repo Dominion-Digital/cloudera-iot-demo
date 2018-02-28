@@ -33,7 +33,7 @@ parameters:
 - description: Git source URI for application
   name: GIT_URI
   required: true
-  value: https://github.com/redhat-iot/cloudera-iot-demo
+  value: https://github.com/Dominion-Digital/cloudera-iot-demo
 - description: Git branch/tag reference
   name: GIT_REF
   value: master
