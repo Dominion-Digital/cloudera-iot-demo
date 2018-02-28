@@ -59,10 +59,9 @@ You should see the following pods and their status:
 |---------------------|:-----------:|:-------:|
 |dashboard-1-xxx      |    1/1      | Running |
 |datastore-1-xxx      |    1/1      | Running |
-|datastore-proxy-1-xxx|    1/1      | Running |
+|dashboard-proxy-1-xxx|    1/1      | Running |
 |elasticsearch-1-xxx  |    1/1      | Running |
 |kapua-api-1-wc1l7    |    1/1      | Running |
 |kapua-broker-1-xxx   |    1/1      | Running |
 |kapua-console-1-xxx  |    1/1      | Running |
-|simulator-1-xxx      |    1/1      | Running |
 |sql-1-xxx            |    1/1      | Running |
