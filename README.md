@@ -25,7 +25,7 @@ Follow these steps to build and run the demo:
 
 2. Clone this repo
 ```
-https://github.com/Dominion-Digital/cloudera-iot-demo
+git clone https://github.com/Dominion-Digital/cloudera-iot-demo
 cd cloudera-iot-demo/openshift
 ```
 
