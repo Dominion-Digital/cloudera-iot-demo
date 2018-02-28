@@ -98,11 +98,11 @@ parameters:
   required: true
 - description: Cloudera Impala service hostname
   name: IMPALA_HOST
-  value: ""
+  value: "127.0.0.1"
   required: true
 - description: Cloudera Impala service port
   name: IMPALA_PORT
-  value: ""
+  value: "21050"
   required: true
 labels:
   demo: cloudera
