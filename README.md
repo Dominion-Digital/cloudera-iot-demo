@@ -46,7 +46,7 @@ oc create -n openshift -f https://raw.githubusercontent.com/openshift/origin/mas
 ```
 
 Once everything is up and running, you can access the demo using the URL of the `dashboard` route,
-for example `http://dashboard-redhat-iot.domain`
+for example `http://dashboard-cloudera-iot-demo.domain`
 
 Confirm that all the components are running successfully:
 
