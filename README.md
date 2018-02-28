@@ -65,3 +65,9 @@ You should see the following pods and their status:
 |kapua-broker-1-xxx   |    1/1      | Running |
 |kapua-console-1-xxx  |    1/1      | Running |
 |sql-1-xxx            |    1/1      | Running |
+
+
+4. Issue the following commands to download Impala drivers and deploy the dashboard-proxy container:
+```
+./golocal.sh
+```
