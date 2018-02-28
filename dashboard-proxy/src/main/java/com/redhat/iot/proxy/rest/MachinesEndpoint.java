@@ -49,8 +49,9 @@ public class MachinesEndpoint {
     @Produces({"application/json"})
     public List<Point> getHistory(@QueryParam("topic") String topic, @QueryParam("metric") String metric) throws SQLException {
 
-        Connection con = null;
+        
         List<Point> temp = new ArrayList<>();
+		Connection con = null;
 
         try {
 
