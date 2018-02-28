@@ -16,7 +16,7 @@ set -e
 
 . common.sh
 
-OPENSHIFT_PROJECT_NAME=${OPENSHIFT_PROJECT_NAME:=redhat-iot}
+OPENSHIFT_PROJECT_NAME=${OPENSHIFT_PROJECT_NAME:=cloudera-iot-demo}
 
 # print error and exit when necessary
 

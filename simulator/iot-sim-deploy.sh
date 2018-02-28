@@ -14,7 +14,7 @@
 
 . openshift-common.sh
 
-: ${OPENSHIFT_PROJECT_NAME:=redhat-iot}
+: ${OPENSHIFT_PROJECT_NAME:=cloudera-iot-demo}
 : ${DOCKER_ACCOUNT:=redhatiot}
 
 

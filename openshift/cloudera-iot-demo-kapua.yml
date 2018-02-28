@@ -373,15 +373,15 @@ objects:
     - name: mqtt-tcp
       protocol: TCP
       port: 1883
-      nodePort: 31883
+      nodePort: 31893
     - name: mqtts-tcp
       protocol: TCP
       port: 8883
-      nodePort: 31885
+      nodePort: 31895
     - name: mqtt-websocket-tcp
       protocol: TCP
       port: 61614
-      nodePort: 31614
+      nodePort: 31694
     selector:
       app: kapua-broker
       deploymentconfig: kapua-broker
