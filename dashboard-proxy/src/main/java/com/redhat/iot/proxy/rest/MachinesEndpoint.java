@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.Random;
+import java.util.logging.Logger;
 
 /**
  * A simple REST service which proxies requests to a local datagrid.
@@ -38,6 +39,7 @@ import java.util.Random;
 @Path("/machines")
 @Singleton
 public class MachinesEndpoint {
+	private static final Logger log = Logger.getLogger(MachinesEndpoint.class.getName());
 
     @Inject
     DGService dgService;
@@ -49,8 +51,7 @@ public class MachinesEndpoint {
     @Path("/history/query")
     @Produces({"application/json"})
     public List<Point> getHistory(@QueryParam("topic") String topic, @QueryParam("metric") String metric) throws SQLException {
-		
-		System.out.println("getHistory(" + topic + ", " + metric + ")");
+		log.info("getHistory(" + topic + ", " + metric + ")");
 		
 		switch (metric) {
 			default: return getPoints(50, 12.5, 14.6);
@@ -112,19 +113,29 @@ public class MachinesEndpoint {
 	
 	private List<Point> getPoints(int numPoints, double minValue, double maxValue) {
 		List<Point> temp = new ArrayList<>();
-        for(int i=1; i<numPoints; i++){
-			// La primera columna es el timestamp y la segunda el punto que se quiere pintar
-			temp.add(new Point(System.currentTimeMillis() / 1000L, randDouble(minValue,maxValue)));
+		try {
+			for(int i=1; i<numPoints; i++){
+				// La primera columna es el timestamp y la segunda el punto que se quiere pintar
+				temp.add(new Point(System.currentTimeMillis() / 1000L, randDouble(minValue,maxValue)));
+			}
+		}
+		catch(Exception e){
+			log.warning(e.getMessage());
 		}
 		return temp;
     }
 	
 	public static double randDouble(int min, int max) {
 		final Random r = new Random();
-		final long seed = r.nextLong();
-		r.setSeed(seed);
-		//int randomNum = r.nextInt((max - min) + 1) + min;
-		double randomValue = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
-		return randomNum;
+		try {
+			final long seed = r.nextLong();
+			r.setSeed(seed);
+			//int randomNum = r.nextInt((max - min) + 1) + min;
+			double randomValue = rangeMin + (rangeMax - rangeMin) * r.nextDouble();
+			return randomNum;
+		catch(Exception e){
+			log.warning(e.getMessage());
+			return 0;
+		}
 	}
 }
