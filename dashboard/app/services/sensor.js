@@ -469,7 +469,29 @@ angular.module('app')
                     "/lines/" + line.lid +
                     "/machines/" + machine.mid +
                     "/control");
-
+					
+				$timeout(function () {
+					var startDateTime = new Date();
+					var endDateTime = new Date();
+					endDateTime.setHours(startDateTime.getHours() + 4);
+					var msg = {
+						id: guid(),
+						description: 'Maintenance Required',
+						timestamp: startDateTime.getTime(),
+						type: 'maintenance',
+						details: {
+							reason: 'Predictive Maintenance Alert: Machine predicted in state BAD_POWER_SUPPLY with impending failure.',
+							start: startDateTime.getTime(),
+							end: endDateTime.getTime()
+						}
+					};
+					sendJSONObjectMsg(msg,
+						APP_CONFIG.CONTROL_TOPIC_PREFIX +
+						"/facilities/" + facility.fid +
+						"/lines/" + line.lid +
+						"/machines/" + machine.mid +
+						"/alerts");
+				}, 6000);
             };
 
             factory.unpredictedError = function (facility, line, machine) {
@@ -501,7 +523,7 @@ angular.module('app')
 						"/lines/" + line.lid +
 						"/machines/" + machine.mid +
 						"/alerts");
-				}, 3000);
+				}, 5000);
 				
 				$timeout(function () {
 					var startDateTime = new Date();
@@ -524,7 +546,7 @@ angular.module('app')
 						"/lines/" + line.lid +
 						"/machines/" + machine.mid +
 						"/alerts");
-				}, 6000);
+				}, 10000);
             };
 
             connectClient(1);
