@@ -37,7 +37,8 @@ public class Application extends RouteBuilder {
     public void configure() throws Exception {
 
         // Incoming from MQTT
-        from("mqtt:incoming?host=tcp://ec-broker-mqtt.redhat-iot.svc:1883&subscribeTopicName=Red-Hat/+/cloudera-demo/facilities/+/lines/+/machines/+&userName=demogw&password=RedHat123!@#")
+        //from("mqtt:incoming?host=tcp://ec-broker-mqtt.redhat-iot.svc:1883&subscribeTopicName=Red-Hat/+/cloudera-demo/facilities/+/lines/+/machines/+&userName=demogw&password=RedHat123!@#")
+		from("mqtt:incoming?host=tcp://broker-cloudera-iot-demo.svc:1883&subscribeTopicName=Red-Hat/+/cloudera-demo/facilities/+/lines/+/machines/+&userName=demo-gw2&password=RedHat123")
                 .process(new Processor() {
                 @Override
                 public void process(Exchange exchange)
@@ -51,7 +52,8 @@ public class Application extends RouteBuilder {
         .to("kafka:ingest?brokers=34.208.144.34:9092&serializerClass=org.apache.kafka.common.serialization.ByteArraySerializer");
 
         // Dev Kit Gateways (PLC via Modbus and Eurotech Sensor Panel)
-        from("mqtt:incoming?host=tcp://ec-broker-mqtt.redhat-iot.svc:1883&subscribeTopicName=Red-Hat/+/W1/A1/#&userName=demogw&password=RedHat123!@#")
+        //from("mqtt:incoming?host=tcp://ec-broker-mqtt.redhat-iot.svc:1883&subscribeTopicName=Red-Hat/+/W1/A1/#&userName=demogw&password=RedHat123!@#")
+		from("mqtt:incoming?host=tcp://broker-cloudera-iot-demo.svc:1883&subscribeTopicName=Red-Hat/+/W1/A1/#&userName=demo-gw2&password=RedHat123")
                 .process(new Processor() {
                     @Override
                     public void process(Exchange exchange)

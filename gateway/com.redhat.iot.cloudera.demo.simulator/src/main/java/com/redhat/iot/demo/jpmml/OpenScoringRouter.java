@@ -192,7 +192,8 @@ public class OpenScoringRouter implements ConfigurableComponent {
         return new RouteBuilder() {
             @Override
             public void configure() throws Exception {
-                from("mqtt:control?host=tcp://ec-broker-mqtt.redhat-iot.svc:1883&subscribeTopicName=Red-Hat/+/" + asString(properties, "topic.prefix") + "/+&userName=demo-gw2&password=RedHat123!@#")
+                //from("mqtt:control?host=tcp://ec-broker-mqtt.redhat-iot.svc:1883&subscribeTopicName=Red-Hat/+/" + asString(properties, "topic.prefix") + "/+&userName=demo-gw2&password=RedHat123!@#")
+				from("mqtt:control?host=tcp://broker-cloudera-iot-demo.svc:1883&subscribeTopicName=Red-Hat/+/" + asString(properties, "topic.prefix") + "/+&userName=demo-gw2&password=RedHat123")
                         .routeId("openscoring")
                         .unmarshal().gzip()
                         .unmarshal().protobuf(KuraPayloadProto.KuraPayload.getDefaultInstance())
@@ -204,7 +205,8 @@ public class OpenScoringRouter implements ConfigurableComponent {
                             .when(header("demo.modenumber").isEqualTo(2))
                                 .setHeader("CamelMQTTPublishTopic", simple("Red-Hat/cldr-demo-gw/cloudera-demo/facilities/${in.header[demo.facility]}/lines/line-1/machines/${in.header[demo.machine]}/alerts"))
                                 .log("MODE NUMBER 2: SubTopic=${in.header[CamelMQTTPublishTopic]} Machine=${in.header[demo.machine]} Facility=${in.header[demo.facility]}")
-                                .to("mqtt:alert?host=tcp://ec-broker-mqtt.redhat-iot.svc:1883&userName=demo-gw2&password=RedHat123!@#&version=3.1.1&qualityOfService=AtMostOnce")
+                                //.to("mqtt:alert?host=tcp://ec-broker-mqtt.redhat-iot.svc:1883&userName=demo-gw2&password=RedHat123!@#&version=3.1.1&qualityOfService=AtMostOnce")
+								.to("mqtt:alert?host=tcp://broker-cloudera-iot-demo.svc:1883&userName=demo-gw2&password=RedHat123&version=3.1.1&qualityOfService=AtMostOnce")
                         .end();
             }
         };
