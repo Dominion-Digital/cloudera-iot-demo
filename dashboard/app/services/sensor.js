@@ -85,15 +85,14 @@ angular.module('app')
                 message.destinationName = topic;
                 console.log("sending JSON to " + topic + ": " + JSON.stringify(jsonObj));
                 client.send(message);
-
             }
 
             function sendKuraMsg(kuraObj, topic) {
                 var payload = msgproto.encode(kuraObj).finish();
                 var message = new Paho.MQTT.Message(payload);
                 message.destinationName = topic;
+				console.log("sending KuraMsg to " + topic + ": " + JSON.stringify(jsonObj));
                 client.send(message);
-
             }
 
             function handleAlert(destination, alertObj) {
