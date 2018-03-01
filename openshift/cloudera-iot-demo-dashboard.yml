@@ -47,11 +47,11 @@ parameters:
   required: true
 - description: OpenShift load-balanced MQ Broker hostname
   name: BROKER_HOSTNAME
-  value: "kapua-broker"
+  value: "broker"
   required: true
 - description: OpenShift load-balanced MQ Broker port
   name: BROKER_PORT
-  value: "30183"
+  value: "1883"
   required: true
 - description: OpenShift load-balanced MQ Broker websockets port
   name: BROKER_WS_PORT
@@ -98,7 +98,7 @@ parameters:
   required: true
 - description: Cloudera Impala service hostname
   name: IMPALA_HOST
-  value: "127.0.0.1"
+  value: "34.211.218.209"
   required: true
 - description: Cloudera Impala service port
   name: IMPALA_PORT
