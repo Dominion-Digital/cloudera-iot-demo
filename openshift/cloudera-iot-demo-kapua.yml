@@ -26,7 +26,7 @@ parameters:
   value: latest
 - name: DOCKER_ACCOUNT
   description: The docker hub account name to pull from
-  value: kapua
+  value: redhatiot
 - name: JOLOKIA_PASSWORD
   description: The password used for the Jolokia endpoint authentication
   generate: expression
