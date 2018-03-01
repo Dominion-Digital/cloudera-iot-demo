@@ -53,11 +53,12 @@ public class MachinesEndpoint {
     public List<Point> getHistory(@QueryParam("topic") String topic, @QueryParam("metric") String metric) throws SQLException {
 		log.info("getHistory(" + topic + ", " + metric + ")");
 		
+		/*
 		switch (metric) {
 			default: return getPoints(50, 12.5, 14.6);
 		}
+		*/
 		
-		/*
 		Connection con = null;
         try {
 
@@ -102,15 +103,15 @@ public class MachinesEndpoint {
             }
             long end2 = System.currentTimeMillis();
 
-            System.out.println(count + " results took " + (end1 - start) + "ms, then another " + (end2 - end1) + "ms to serialize");
+            log.info(count + " results took " + (end1 - start) + "ms, then another " + (end2 - end1) + "ms to serialize");
         } finally {
             if (con != null) {
                 con.close();
             }
         }
-		*/
     }
 	
+	/*
 	private List<Point> getPoints(int numPoints, double minValue, double maxValue) {
 		List<Point> temp = new ArrayList<>();
 		try {
@@ -138,4 +139,5 @@ public class MachinesEndpoint {
 			return 0;
 		}
 	}
+	*/
 }
