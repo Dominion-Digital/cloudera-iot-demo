@@ -473,6 +473,7 @@ angular.module('app')
             };
 
             factory.unpredictedError = function (facility, line, machine) {
+				/*
                 var msg = {
                     id: guid(),
                     timestamp: new Date().getTime(),
@@ -484,6 +485,22 @@ angular.module('app')
                     "/lines/" + line.lid +
                     "/machines/" + machine.mid +
                     "/control");
+				*/
+				var msg = {
+                    id: guid(),
+					description: 'Bad Power Supply',
+                    timestamp: new Date().getTime(),
+                    type: 'error',
+					details: {
+						reason: 'Alert: Machine predicted in state ROTOR_LOCK with immediate failure.'
+					}
+                };
+                sendJSONObjectMsg(msg,
+                    APP_CONFIG.CONTROL_TOPIC_PREFIX +
+                    "/facilities/" + facility.fid +
+                    "/lines/" + line.lid +
+                    "/machines/" + machine.mid +
+                    "/alerts");
             };
 
             connectClient(1);
